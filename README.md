@@ -1,6 +1,6 @@
-# Minimal YouTube Rewind Extension
+# Minimal YouTube Rewind Extension 
 
-![YouTube Rewind](images/icon16.png)
+![image](https://github.com/user-attachments/assets/3c4cd56c-3064-42e4-88d4-4e487d64b589)
 
 ## Overview
 
