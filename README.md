@@ -21,6 +21,7 @@ Tired of watching the same 5 seconds over and over again? The **Minimal YouTube 
 - Load the `dist` folder as an unpacked extension in Chrome.
 
 ### Firefox 
+- Add this in the address bar `about:debugging#/runtime/this-firefox`
 - Load the `dist` folder as a temporary extension in Firefox.
 
 ## Usage
