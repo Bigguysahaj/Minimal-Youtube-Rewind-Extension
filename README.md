@@ -22,7 +22,7 @@ Tired of watching the same 5 seconds over and over again? The **Minimal YouTube 
 
 ### Firefox 
 - Add this in the address bar `about:debugging#/runtime/this-firefox`
-- Load the `dist` folder as a temporary extension in Firefox.
+- Load the `manifest.json` from `dist` folder as a temporary extension in Firefox.
 
 ## Usage
 
