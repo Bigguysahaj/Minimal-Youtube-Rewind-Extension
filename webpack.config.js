@@ -3,9 +3,8 @@ const CopyPlugin = require('copy-webpack-plugin');
 const path = require('path');
 
 module.exports = {
+  mode: 'development',
   entry: {
-    popup: './src/popup.tsx',
-    background: './src/background.js',
     content: './src/content.tsx'
   },
   output: {
@@ -22,7 +21,16 @@ module.exports = {
       patterns: [{
         from: path.resolve('manifest.json'),
         to: path.resolve('dist')
-      }]
+      },
+      {
+        from: path.resolve('images'),
+        to: path.resolve('dist/images')
+      },
+      {
+        from: path.resolve('src/background.js'),
+        to: path.resolve('dist')
+      }
+    ]
     })
   ],
   module: {
@@ -33,5 +41,6 @@ module.exports = {
         exclude: /node_modules/
       }
     ]
-  }
+  },
+  devtool: 'inline-source-map',
 };

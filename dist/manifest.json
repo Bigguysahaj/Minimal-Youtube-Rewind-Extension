@@ -5,7 +5,7 @@
   "version": "0.1",
   "permissions": ["activeTab", "scripting"],
   "background": {
-    "scripts": ["background.js"]
+    "service_worker": "background.js"
   },
   "content_scripts": [
     {
@@ -14,7 +14,6 @@
     }
   ],
   "action": {
-    "default_popup": "popup.html",
     "default_icon": {
       "16": "images/icon16.png",
       "48": "images/icon16.png",
