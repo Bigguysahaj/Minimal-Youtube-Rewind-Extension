@@ -1,6 +1,6 @@
-# Minimal YouTube Rewind Extension
+# Minimal YouTube Rewind Extension 
 
-![YouTube Rewind](images/icon16.png)
+![image](https://github.com/user-attachments/assets/3c4cd56c-3064-42e4-88d4-4e487d64b589)
 
 ## Overview
 
@@ -21,7 +21,8 @@ Tired of watching the same 5 seconds over and over again? The **Minimal YouTube 
 - Load the `dist` folder as an unpacked extension in Chrome.
 
 ### Firefox 
-- Load the `dist` folder as a temporary extension in Firefox.
+- Add this in the address bar `about:debugging#/runtime/this-firefox`
+- Load the `manifest.json` from `dist` folder as a temporary extension in Firefox.
 
 ## Usage
 
