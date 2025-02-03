@@ -3,10 +3,8 @@
   "name": "True Youtube Rewind Extension",
   "description": "Adds a 2x rewind feature to youtube, because you don't want to watch the same 5 seconds over and over again.",
   "version": "0.1",
-  "permissions": ["activeTab", "scripting"],
-  "background": {
-    "service_worker": "background.js"
-  },
+  "permissions": [],
+  "host_permissions": ["https://www.youtube.com/*"],
   "content_scripts": [
     {
       "matches": ["*://www.youtube.com/*"],

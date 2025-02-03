@@ -26,10 +26,10 @@ module.exports = {
         from: path.resolve('images'),
         to: path.resolve('dist/images')
       },
-      {
-        from: path.resolve('src/background.js'),
-        to: path.resolve('dist')
-      }
+      // {
+      //   from: path.resolve('src/background.js'),
+      //   to: path.resolve('dist')
+      // }
     ]
     })
   ],
