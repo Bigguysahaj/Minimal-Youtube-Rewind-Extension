@@ -5,8 +5,8 @@ interface SpeedOverlay {
 }
 
 class VideoRewindController {
-  private static readonly REWIND_SPEED = 0.067; // ~15 frames per second
-  private static readonly UPDATE_INTERVAL = 16.67; // ~60fps
+  private static readonly REWIND_SPEED = 0.067; // ~15 frames per second (1/15) This is like 2x speed in reverse. 1/30 would be 1x speed in reverse. 
+  private static readonly UPDATE_INTERVAL = 33.33; // ~30fps (1000/30) This does not cause buffering situations.
   private static readonly OVERLAY_DURATION = 700; // ms
 
   private isRewinding: boolean = false;
