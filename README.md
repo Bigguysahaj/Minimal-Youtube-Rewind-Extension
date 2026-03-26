@@ -37,6 +37,31 @@ To contribute or modify the extension:
 2. Make your changes in the `src` folder.
 3. Run `npm run build` to compile your changes.
 
+## TODO
+
+### Testing
+- [ ] Add Jest + jsdom test setup
+- [ ] Unit tests for `lerp()` (pure math, edge cases: t=0, t=1)
+- [ ] Unit tests for `getVideoElement()` — null when no video, returns element when present
+- [ ] Unit tests for `rewind()` — decrements `currentTime` by `REWIND_SPEED`, no-op when no video
+- [ ] Unit tests for `startRewind()` / `stopRewind()` — interval lifecycle and `isRewinding` state
+- [ ] Unit tests for keyboard bindings — `Shift+Space` triggers rewind, plain `Space` does not
+- [ ] Unit tests for overlay mutation — label set to `'2x'`, icon rotated, hidden after `OVERLAY_DURATION`
+- [ ] Guard against double-interval bug (pressing `Shift+Space` twice rapidly)
+
+### Features
+- [ ] Publish to Chrome Web Store
+- [ ] Fix Firefox compatibility issues
+- [ ] Implement LERP for smoother rewind animation
+- [ ] Allow configurable rewind speed via extension popup
+- [ ] Bind custom keyboard shortcuts via settings
+- [ ] Implement fast-forward counterpart feature
+
+### Build & Infrastructure
+- [ ] Add CI pipeline (GitHub Actions) for build and lint checks
+- [ ] Add ESLint / Prettier for code consistency
+- [ ] Switch webpack to production mode for release builds
+
 ## License
 
 This project is licensed under the MIT License.
