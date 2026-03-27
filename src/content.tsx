@@ -4,7 +4,7 @@ interface SpeedOverlay {
   icon: HTMLElement;
 }
 
-class VideoRewindController {
+export class VideoRewindController {
   private static readonly REWIND_SPEED = 0.067; // ~15 frames per second (1/15) This is like 2x speed in reverse. 1/30 would be 1x speed in reverse. 
   private static readonly UPDATE_INTERVAL = 33.33; // ~30fps (1000/30) This does not cause buffering situations.
   private static readonly OVERLAY_DURATION = 700; // ms
@@ -100,4 +100,6 @@ class VideoRewindController {
   }
 }
 
-new VideoRewindController();
+if (!process.env.JEST_WORKER_ID) {
+  new VideoRewindController();
+}
