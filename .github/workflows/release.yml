@@ -24,6 +24,14 @@ jobs:
       - run: npm run typecheck
       - run: npm test
       - run: npm run build:prod
+      - name: Extract changelog notes
+        id: changelog
+        run: |
+          VERSION=$(jq -r '.version' manifest.json)
+          NOTES=$(awk "/^## \[$VERSION\]/{found=1; next} /^## \[/{if(found) exit} found{print}" CHANGELOG.md)
+          echo "notes<<EOF" >> $GITHUB_OUTPUT
+          echo "$NOTES" >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
       - name: Zip extension
         run: zip -r extension-${{ steps.version.outputs.tag }}.zip dist/
       - name: Create GitHub Release
@@ -31,4 +39,4 @@ jobs:
         with:
           tag_name: ${{ steps.version.outputs.tag }}
           files: extension-${{ steps.version.outputs.tag }}.zip
-          generate_release_notes: true
+          body: ${{ steps.changelog.outputs.notes }}
