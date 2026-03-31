@@ -5,7 +5,8 @@
     "lib": ["dom", "es2015"],
     "jsx": "react",
     "outDir": "./dist",
-    "strict": true
+    "strict": true,
+    "skipLibCheck": true
   },
   "include": ["./src/**/*"]
 }

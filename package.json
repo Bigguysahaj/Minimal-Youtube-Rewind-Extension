@@ -4,8 +4,10 @@
   "description": "A Chrome extension to add rewind feature to YouTube videos.",
   "main": "dist/background.js",
   "scripts": {
-    "build": "webpack",
-    "test": "jest"
+    "build": "webpack --mode development",
+    "build:prod": "webpack --mode production",
+    "test": "jest",
+    "typecheck": "tsc --noEmit"
   },
   "jest": {
     "preset": "ts-jest",
