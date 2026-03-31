@@ -1,105 +1,107 @@
 interface SpeedOverlay {
-  element: HTMLElement;
-  label: HTMLElement;
-  icon: HTMLElement;
+  element: HTMLElement
+  label: HTMLElement
+  icon: HTMLElement
 }
 
 export class VideoRewindController {
-  private static readonly REWIND_SPEED = 0.067; // ~15 frames per second (1/15) This is like 2x speed in reverse. 1/30 would be 1x speed in reverse. 
-  private static readonly UPDATE_INTERVAL = 33.33; // ~30fps (1000/30) This does not cause buffering situations.
-  private static readonly OVERLAY_DURATION = 700; // ms
+  private static readonly REWIND_SPEED = 0.067 // ~15 frames per second (1/15) This is like 2x speed in reverse. 1/30 would be 1x speed in reverse. 
+  private static readonly UPDATE_INTERVAL = 33.33 // ~30fps (1000/30) This does not cause buffering situations.
+  private static readonly OVERLAY_DURATION = 700
 
-  private isRewinding: boolean = false;
-  private rewindInterval: number | null = null;
+  private isRewinding: boolean = false
+  private rewindInterval: number | null = null
 
   constructor() {
-    this.initializeKeyboardListener();
+    this.initializeKeyboardListener()
   }
 
   public lerp = (start: number, end: number, t: number) => {
-    return start * (1 - t) + end * t;
+    return start * (1 - t) + end * t
   }
 
   private getVideoElement(): HTMLVideoElement | null {
-    return document.querySelector('video');
+    return document.querySelector('video')
   }
 
   private getSpeedOverlay(): SpeedOverlay | null {
-    const overlay = document.querySelector('.ytp-overlay.ytp-speedmaster-overlay') as HTMLElement;
-    if (!overlay) return null;
+    const overlay = document.querySelector('.ytp-overlay.ytp-speedmaster-overlay') as HTMLElement
+    if (!overlay) return null
 
     return {
       element: overlay,
       label: overlay.querySelector('.ytp-speedmaster-label') as HTMLElement,
       icon: overlay.querySelector('.ytp-speedmaster-icon path') as HTMLElement
-    };
+    }
   }
 
   private rewind(): void {
-    const video = this.getVideoElement();
-    if (!video) return;
+    const video = this.getVideoElement()
+    if (!video) return
 
-    video.currentTime -= VideoRewindController.REWIND_SPEED;
+    video.currentTime -= VideoRewindController.REWIND_SPEED
   }
 
   private handleOverlay(): void {
-    const overlay = this.getSpeedOverlay();
-    if (!overlay) return;
+    const overlay = this.getSpeedOverlay()
+    if (!overlay) return
 
-    this.showRewindOverlay(overlay);
-    this.scheduleOverlayHide(overlay);
+    this.showRewindOverlay(overlay)
   }
 
   private showRewindOverlay(overlay: SpeedOverlay): void {
-    const { element, label, icon } = overlay;
+    const { element, label, icon } = overlay
     
-    if (label) label.textContent = '2x';
-    if (icon) icon.setAttribute('transform', 'rotate(180 18.75 18)');
-    element.style.display = 'block';
+    if (label) label.textContent = '2x'
+    if (icon) icon.setAttribute('transform', 'rotate(180 18.75 18)')
+    element.style.display = 'block'
   }
 
   private scheduleOverlayHide(overlay: SpeedOverlay): void {
-    const { element, label, icon } = overlay;
+    const { element, label, icon } = overlay
 
     window.setTimeout(() => {
-      if (label) label.textContent = '2x';
-      if (icon) icon.removeAttribute('transform');
-      element.style.display = 'none';
-    }, VideoRewindController.OVERLAY_DURATION);
+      if (label) label.textContent = '2x'
+      if (icon) icon.removeAttribute('transform')
+      element.style.display = 'none'
+    }, VideoRewindController.OVERLAY_DURATION)
   }
 
   private initializeKeyboardListener(): void {
     document.addEventListener('keydown', (event: KeyboardEvent): void => {
       if (event.shiftKey && event.code === 'Space' && !this.isRewinding) {
-        this.startRewind();
+        this.startRewind()
       }
-    });
+    })
 
     document.addEventListener('keyup', (event: KeyboardEvent): void => {
       if (event.code === 'Space') {
-        this.stopRewind();
+        this.stopRewind()
       }
-    });
+    })
   }
 
   private startRewind(): void {
-    this.isRewinding = true;
+    this.isRewinding = true
     this.rewindInterval = window.setInterval(
       () => this.rewind(),
       VideoRewindController.UPDATE_INTERVAL
-    );
-    this.handleOverlay();
+    )
+    this.handleOverlay()
   }
 
   private stopRewind(): void {
+    const overlay = this.getSpeedOverlay()
+
     if (this.rewindInterval) {
-      window.clearInterval(this.rewindInterval);
-      this.rewindInterval = null;
+      window.clearInterval(this.rewindInterval)
+      this.rewindInterval = null
     }
-    this.isRewinding = false;
+    this.isRewinding = false
+    if (overlay) this.scheduleOverlayHide(overlay)
   }
 }
 
-if (!process.env.JEST_WORKER_ID) {
-  new VideoRewindController();
+if (typeof process === 'undefined' || !process.env.JEST_WORKER_ID) {
+  new VideoRewindController()
 }

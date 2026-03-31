@@ -40,14 +40,14 @@ To contribute or modify the extension:
 ## TODO
 
 ### Testing
-- [ ] Add Jest + jsdom test setup
-- [ ] Unit tests for `lerp()` (pure math, edge cases: t=0, t=1)
-- [ ] Unit tests for `getVideoElement()` — null when no video, returns element when present
-- [ ] Unit tests for `rewind()` — decrements `currentTime` by `REWIND_SPEED`, no-op when no video
-- [ ] Unit tests for `startRewind()` / `stopRewind()` — interval lifecycle and `isRewinding` state
-- [ ] Unit tests for keyboard bindings — `Shift+Space` triggers rewind, plain `Space` does not
-- [ ] Unit tests for overlay mutation — label set to `'2x'`, icon rotated, hidden after `OVERLAY_DURATION`
-- [ ] Guard against double-interval bug (pressing `Shift+Space` twice rapidly)
+- [x] Add Jest + jsdom test setup
+- [x] Unit tests for `lerp()` (pure math, edge cases: t=0, t=1)
+- [x] Unit tests for `getVideoElement()` — null when no video, returns element when present
+- [x] Unit tests for `rewind()` — decrements `currentTime` by `REWIND_SPEED`, no-op when no video
+- [x] Unit tests for `startRewind()` / `stopRewind()` — interval lifecycle and `isRewinding` state
+- [x] Unit tests for keyboard bindings — `Shift+Space` triggers rewind, plain `Space` does not
+- [x] Unit tests for overlay mutation — label set to `'2x'`, icon rotated, hidden after `OVERLAY_DURATION`
+- [x] Guard against double-interval bug (pressing `Shift+Space` twice rapidly)
 
 ### Features
 - [ ] Publish to Chrome Web Store
