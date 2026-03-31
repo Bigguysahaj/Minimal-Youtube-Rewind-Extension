@@ -1,0 +1,42 @@
+name: Release
+
+on:
+  push:
+    branches: [master]
+    paths:
+      - 'manifest.json'
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+      - name: Read version from manifest
+        id: version
+        run: echo "tag=v$(jq -r '.version' manifest.json)" >> $GITHUB_OUTPUT
+      - run: npm ci
+      - run: npm run typecheck
+      - run: npm test
+      - run: npm run build:prod
+      - name: Extract changelog notes
+        id: changelog
+        run: |
+          VERSION=$(jq -r '.version' manifest.json)
+          NOTES=$(awk "/^## \[$VERSION\]/{found=1; next} /^## \[/{if(found) exit} found{print}" CHANGELOG.md)
+          echo "notes<<EOF" >> $GITHUB_OUTPUT
+          echo "$NOTES" >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
+      - name: Zip extension
+        run: zip -r extension-${{ steps.version.outputs.tag }}.zip dist/
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ steps.version.outputs.tag }}
+          files: extension-${{ steps.version.outputs.tag }}.zip
+          body: ${{ steps.changelog.outputs.notes }}
