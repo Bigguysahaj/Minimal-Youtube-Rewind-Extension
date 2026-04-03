@@ -1,71 +1,67 @@
 # True YouTube Rewind Extension (TYR)
 
+![Version](https://img.shields.io/badge/version-0.2.2-blue) ![License](https://img.shields.io/badge/license-MIT-green) ![Manifest V3](https://img.shields.io/badge/Manifest-V3-orange)
+
 ![image](https://github.com/user-attachments/assets/3c4cd56c-3064-42e4-88d4-4e487d64b589)
 
-## Overview
+Tired of watching the same 5 seconds over and over again? **True Youtube Rewind Extension** adds a proper rewind shortcut to YouTube — tap to step back 1 second, hold to rewind continuously at 2× speed.
 
-Tired of watching the same 5 seconds over and over again? The **True YouTube Rewind Extension** adds a rewind feature to YouTube videos, allowing you to quickly rewind the seconds you missed.
+<!-- Add a GIF or screenshot here showing Shift+Space rewinding a YouTube video -->
 
 ## Features
 
-- **Rewind seconds with more control**: Press `Shift + Space` to rewind the current video by 1 second at a time or hold to go back smoothly.
-- **Seamless Integration**: Works automatically on all YouTube videos.
-- **Minimal and Lightweight**: No unnecessary bloat, just the functionality you need.
+- **Tap** `Shift + Space` to jump back 1 second
+- **Hold** `Shift + Space` to rewind continuously at 2× speed
+- Zero permissions required — only runs on youtube.com
+- Seamless integration with YouTube's native speed overlay
 
 ## Installation
 
-### Web Store Links
-(comming soons)
+### Chrome Web Store
 
-### Chrome
-- Load the `dist` folder as an unpacked extension in Chrome.
+Coming soon on the Chrome Web Store.
 
-### Firefox 
-- Add this in the address bar `about:debugging#/runtime/this-firefox`
-- Load the `manifest.json` from `dist` folder as a temporary extension in Firefox.
+### Manual (Developer Mode)
+
+1. Clone this repository
+2. Run `npm run build:prod` to compile
+3. Open Chrome → `chrome://extensions` → enable **Developer mode**
+4. Click **Load unpacked** → select the `dist` folder
+
+### Firefox
+
+1. Open `about:debugging#/runtime/this-firefox`
+2. Click **Load Temporary Add-on** → select `manifest.json` from the `dist` folder
+
+> Firefox support is experimental. Basic functionality works as of v0.2.2.
 
 ## Usage
 
-1. Open any YouTube video.
-2. Press `Shift + Space` to rewind the video by 1 seconds.
+| Shortcut | Action |
+|---|---|
+| `Shift + Space` (tap) | Jump back 1 second |
+| `Shift + Space` (hold) | Rewind continuously at 2× speed |
+| `Space` | Pause / play (default YouTube behaviour, unchanged) |
 
 ## Development
 
-To contribute or modify the extension:
+```bash
+git clone https://github.com/Bigguysahaj/Minimal-Youtube-Rewind-Extension.git
+cd Minimal-Youtube-Rewind-Extension
+npm install
+```
 
-1. Clone the repository.
-2. Make your changes in the `src` folder.
-3. Run `npm run build` to compile your changes.
-
-## TODO
-
-### Testing
-- [x] Add Jest + jsdom test setup
-- [x] Unit tests for `lerp()` (pure math, edge cases: t=0, t=1)
-- [x] Unit tests for `getVideoElement()` — null when no video, returns element when present
-- [x] Unit tests for `rewind()` — decrements `currentTime` by `REWIND_SPEED`, no-op when no video
-- [x] Unit tests for `startRewind()` / `stopRewind()` — interval lifecycle and `isRewinding` state
-- [x] Unit tests for keyboard bindings — `Shift+Space` triggers rewind, plain `Space` does not
-- [x] Unit tests for overlay mutation — label set to `'2x'`, icon rotated, hidden after `OVERLAY_DURATION`
-- [x] Guard against double-interval bug (pressing `Shift+Space` twice rapidly)
-
-### Features
-- [ ] Publish to Chrome Web Store
-- [ ] Fix Firefox compatibility issues
-- [ ] Implement LERP for smoother rewind animation
-- [ ] Allow configurable rewind speed via extension popup
-- [ ] Bind custom keyboard shortcuts via settings
-- [ ] Implement fast-forward counterpart feature
-
-### Build & Infrastructure
-- [ ] Add CI pipeline (GitHub Actions) for build and lint checks
-- [ ] Add ESLint / Prettier for code consistency
-- [ ] Switch webpack to production mode for release builds
+| Command | Description |
+|---|---|
+| `npm run build` | Dev build with source maps |
+| `npm run build:prod` | Production build — minified, no source maps |
+| `npm test` | Run Jest unit tests |
+| `npm run typecheck` | TypeScript type check (no emit) |
 
 ## License
 
-This project is licensed under the MIT License.
+This project is licensed under the [MIT License](LICENSE).
 
 ---
 
-Enjoy a smoother YouTube experience with the True YouTube Rewind Extension!
+Enjoy a smoother YouTube experience with the True Youtube Rewind Extension!
