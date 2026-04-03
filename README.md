@@ -1,10 +1,10 @@
-# Minimal YouTube Rewind Extension 
+# True YouTube Rewind Extension (TYR)
 
 ![image](https://github.com/user-attachments/assets/3c4cd56c-3064-42e4-88d4-4e487d64b589)
 
 ## Overview
 
-Tired of watching the same 5 seconds over and over again? The **Minimal YouTube Rewind Extension** adds a rewind feature to YouTube videos, allowing you to quickly rewind the seconds you missed.
+Tired of watching the same 5 seconds over and over again? The **True YouTube Rewind Extension** adds a rewind feature to YouTube videos, allowing you to quickly rewind the seconds you missed.
 
 ## Features
 

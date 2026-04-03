@@ -2,7 +2,8 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
 const path = require('path');
 
-module.exports = {
+module.exports = (env, argv) => ({
+  mode: argv.mode || 'development',
   entry: {
     content: './src/content.tsx'
   },
@@ -41,5 +42,5 @@ module.exports = {
       }
     ]
   },
-  devtool: 'inline-source-map',
-};
+  devtool: argv.mode === 'production' ? false : 'inline-source-map',
+});
