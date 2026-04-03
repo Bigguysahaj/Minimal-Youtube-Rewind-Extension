@@ -2,6 +2,8 @@
 
 ![Version](https://img.shields.io/badge/version-0.2.2-blue) ![License](https://img.shields.io/badge/license-MIT-green) ![Manifest V3](https://img.shields.io/badge/Manifest-V3-orange)
 
+![image](https://github.com/user-attachments/assets/3c4cd56c-3064-42e4-88d4-4e487d64b589)
+
 Tired of watching the same 5 seconds over and over again? **True Youtube Rewind Extension** adds a proper rewind shortcut to YouTube — tap to step back 1 second, hold to rewind continuously at 2× speed.
 
 <!-- Add a GIF or screenshot here showing Shift+Space rewinding a YouTube video -->
