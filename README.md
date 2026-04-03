@@ -4,7 +4,7 @@
 
 ![image](https://github.com/user-attachments/assets/3c4cd56c-3064-42e4-88d4-4e487d64b589)
 
-Tired of watching the same 5 seconds over and over again? **True Youtube Rewind Extension** adds a proper rewind shortcut to YouTube — tap to step back 1 second, hold to rewind continuously at 2× speed.
+Tired of watching the same 5 seconds over and over again? **True Youtube Rewind Extension** adds a proper rewind shortcut to YouTube - tap to step back 1 second, hold to rewind continuously at 2× speed.
 
 <!-- Add a GIF or screenshot here showing Shift+Space rewinding a YouTube video -->
 
@@ -12,7 +12,7 @@ Tired of watching the same 5 seconds over and over again? **True Youtube Rewind 
 
 - **Tap** `Shift + Space` to jump back 1 second
 - **Hold** `Shift + Space` to rewind continuously at 2× speed
-- Zero permissions required — only runs on youtube.com
+- Zero permissions required - only runs on youtube.com
 - Seamless integration with YouTube's native speed overlay
 
 ## Installation
@@ -54,7 +54,7 @@ npm install
 | Command | Description |
 |---|---|
 | `npm run build` | Dev build with source maps |
-| `npm run build:prod` | Production build — minified, no source maps |
+| `npm run build:prod` | Production build - minified, no source maps |
 | `npm test` | Run Jest unit tests |
 | `npm run typecheck` | TypeScript type check (no emit) |
 
