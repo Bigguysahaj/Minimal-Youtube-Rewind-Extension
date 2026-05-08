@@ -19,7 +19,7 @@ Tired of watching the same 5 seconds over and over again? **True Youtube Rewind 
 
 ### Chrome Web Store
 
-Coming soon on the Chrome Web Store.
+[Coming soon on the Chrome Web Store.](https://chromewebstore.google.com/detail/true-youtube-rewind-exten/dclchmefjkojibllfcnoglaoejlmfeeg?authuser=0&hl=en-GB)
 
 ### Manual (Developer Mode)
 
