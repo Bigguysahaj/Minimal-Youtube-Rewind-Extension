@@ -40,6 +40,7 @@ export class VideoRewindController {
     if (!video) return
 
     video.currentTime -= VideoRewindController.REWIND_SPEED
+    this.handleOverlay()
   }
 
   private handleOverlay(): void {
@@ -69,16 +70,20 @@ export class VideoRewindController {
 
   private initializeKeyboardListener(): void {
     document.addEventListener('keydown', (event: KeyboardEvent): void => {
-      if (event.shiftKey && event.code === 'Space' && !this.isRewinding) {
-        this.startRewind()
+      if (event.shiftKey && event.code === 'Space') {
+        event.preventDefault()
+        event.stopPropagation()
+        if (!this.isRewinding) this.startRewind()
       }
-    })
+    }, true)
 
     document.addEventListener('keyup', (event: KeyboardEvent): void => {
-      if (event.code === 'Space') {
+      if (event.code === 'Space' && this.isRewinding) {
+        event.preventDefault()
+        event.stopPropagation()
         this.stopRewind()
       }
-    })
+    }, true)
   }
 
   private startRewind(): void {

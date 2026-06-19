@@ -15,6 +15,7 @@ module.exports = (env, argv) => ({
   plugins: [
     new HtmlWebpackPlugin({
       template: './src/popup.html',
+      filename: 'popup.html',
       inject: false
     }),
     new CopyPlugin({
